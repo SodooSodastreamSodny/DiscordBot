@@ -22,11 +22,22 @@
             [Command("embed")]
             public async Task EmbedMessage(CommandContext ctx)
             {
-                var message = new DiscordMessageBuilder()   
-                    .AddEmbed(new DiscordEmbedBuilder()
-                        .WithTitle("This is my first Discord Embed")
-                        .WithDescription($"This command was executed by {ctx.User.Username}"));
-                await ctx.Channel.SendMessageAsync(message);
+                var msg = new DiscordEmbedBuilder()
+                {
+                    Title = "This is my first Discord Embed",
+                    Description = $"This command was executed by {ctx.User.Username}",
+                    Color = DiscordColor.HotPink
+                };
+                    
+                await ctx.Channel.SendMessageAsync(embed: msg);
             }
+
+            [Command("playCards")]
+            public async Task PlayCards(CommandContext ctx)
+            {
+                var symbols = new string[] {"clubs", "Spades", "Diamonds", "Hearts"};
+                
+            }
+            
         }
     }
